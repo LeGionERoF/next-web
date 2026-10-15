@@ -1,0 +1,44 @@
+.idea-card {
+  background: white;
+  padding: 20px 25px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eee;
+  transition: all 0.3s;
+}
+
+.idea-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.idea-title {
+  margin: 0 0 10px 0;
+  color: #1a1a2e;
+  font-size: 20px;
+}
+
+.idea-description {
+  margin: 0 0 15px 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.idea-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.idea-author {
+  color: #666;
+}
+
+.idea-contacts {
+  color: #e94560;
+  font-weight: 500;
+}

@@ -1,13 +1,14 @@
-import { useState, useEffect, useActionState } from 'react'
-import {db, auth} from './firebase'
+import { useState, useEffect } from 'react'
+import {db, auth} from '../firebase'
 import {collection, addDoc, getDocs, query, orderBy, serverTimestamp} from "firebase/firestore"
 import { onAuthStateChanged, signOut } from 'firebase/auth'
-import Header from './components/Header'
-import IdeaForm from './components/IdeaForm';
-import IdeaList from './components/IdeaList';
-import Login from './components/Login';
-import Register from './components/Register';
-import firebase from 'firebase/compat/app'
+import Header from './Header'
+import IdeaForm from './IdeaForm';
+import IdeaList from './IdeaList';
+import Login from './Login';
+import Register from './Register';
+import "../css/App.css"
+
 
 interface Idea {
   id: string;
@@ -136,7 +137,10 @@ useEffect(() => {
       {!authMode && (
         <>
           <IdeaForm onAddIdea={handleAddIdea}/>
-          <IdeaList ideas={ideas}/>
+          {loading ? (<p>Загрузка идет...</p>) : <IdeaList ideas={ideas}/>} 
+          
+          
+          
         </>
       )}
 

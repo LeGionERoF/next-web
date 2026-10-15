@@ -25,7 +25,7 @@ function IdeaList({ideas}: IdeaListProps) {
 
     return (
         <div className="idea-list">
-            <h2 className="list-title">Список идей 💡</h2>
+            <h2 className="list-title">Список идей </h2>
             {ideas.map(idea => (
                 <IdeaCard key={idea.id} idea={idea}/>
             ))}

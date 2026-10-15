@@ -1,4 +1,4 @@
-
+import "../css/Header.css"
 
 interface HeaderProps {
     user: string | null,

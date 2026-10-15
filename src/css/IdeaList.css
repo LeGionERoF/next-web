@@ -1,0 +1,28 @@
+.idea-list {
+  margin-top: 10px;
+}
+
+.list-title {
+  color: #1a1a2e;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  color: #666;
+}
+
+.empty-state p {
+  font-size: 20px;
+  margin: 0;
+}
+
+.empty-sub {
+  font-size: 16px;
+  color: #999;
+  margin-top: 8px;
+}

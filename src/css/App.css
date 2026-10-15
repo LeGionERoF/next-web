@@ -1,0 +1,9 @@
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-content {
+  margin-top: 20px;
+}

@@ -1,6 +1,8 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../firebase";
+import "../css/Header.css"
+import "../css/IdeaForm.css"
 
 
 interface LoginProps {
@@ -48,14 +50,15 @@ function Login({onLogin, onClose}: LoginProps) {
 
 
     return (
-        <div>
-            <button onClick={onClose}>❌</button>
+        <div className="idea-form">
+            
             <h2>Вход</h2>
 
             {error && <p>{error}</p>}
 
-            <form onSubmit={handleSubmit}>
+            <form className="form-login" onSubmit={handleSubmit}>
                 <input 
+                    className="form-input"
                     type="email"
                     placeholder="Email"
                     value={email}
@@ -63,14 +66,17 @@ function Login({onLogin, onClose}: LoginProps) {
                     required 
                 />
                 <input 
+                    className="form-input"
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required 
                 />
-                <button type="submit" disabled={loading}>{loading ? "Вход..." : "Войти"}</button>
+                <button className="btn btn-login" type="submit" disabled={loading}>{loading ? "Вход..." : "Войти"}</button>
+                <button className="btn btn-login btn-close" onClick={onClose}>❌</button>
             </form>
+
 
 
 
