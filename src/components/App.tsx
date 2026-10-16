@@ -8,6 +8,7 @@ import IdeaList from './IdeaList';
 import Login from './Login';
 import Register from './Register';
 import "../css/App.css"
+import Footer from './Footer'
 
 
 interface Idea {
@@ -137,7 +138,8 @@ useEffect(() => {
       {!mode && 
         <>
           <IdeaForm onAddIdea={handleAddIdea}/>
-          {loading ? (<p>Загрузка идет...</p>) : <IdeaList ideas={ideas}/>} 
+          {loading ? (<p>Загрузка идет...</p>) : <IdeaList ideas={ideas}/>}
+          <Footer></Footer> 
           
           
           
