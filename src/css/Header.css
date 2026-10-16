@@ -37,11 +37,22 @@
   transition: all 0.3s ease;
 }
 
-.btn-login,
+
 .btn-logout {
   border: 2px solid #e94560;
   background: transparent;
   color: white;
+}
+
+.btn-login-main {
+  border: 2px solid #e94560;
+  background: transparent;
+  color: white;
+}
+
+.btn-login {
+  border: 2px solid #e94560;
+  background: transparent;
 }
 
 .btn-login:hover,

@@ -23,7 +23,7 @@ function Header({user, onLogin, onRegister, onLogout}: HeaderProps) {
 
             ) : (
                 <>
-                    <button className="btn btn-login" onClick={() => onLogin()}>Войти</button>
+                    <button className="btn btn-login-main" onClick={() => onLogin()}>Войти</button>
                     <button className="btn btn-register" onClick={() => onRegister()}>Регистрация</button>
                 </>
 

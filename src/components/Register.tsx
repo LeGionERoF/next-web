@@ -1,6 +1,7 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../firebase";
+import "../css/index.css"
 
 interface RegisterProps {
     onRegister: (name: string) => void
@@ -13,6 +14,7 @@ function Register({onRegister, onClose}: RegisterProps) {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
+    const [massage, setMassage] = useState("")
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -33,6 +35,14 @@ function Register({onRegister, onClose}: RegisterProps) {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
         await updateProfile(userCredential.user, {displayName: name})
+        await sendEmailVerification(userCredential.user)
+        if(!userCredential.user.emailVerified) {
+            setError("Подвердите почту!!")
+            setMassage("Подвердите почту!!")
+            return
+        }
+
+        
         onRegister(name)
     } catch (err: any) {
             // Обрабатываем ошибки Firebase
@@ -56,14 +66,15 @@ function Register({onRegister, onClose}: RegisterProps) {
     
 }
     return (
-    <div>
-        <button onClick={onClose}>❌</button>
+    <div className="idea-form">
+        
         <h2>Регистрация</h2>
 
         {error && <p style={{color: "red"}}></p>}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-login">
             <input 
+                className="form-input"
                 type="text"
                 placeholder="Имя"
                 value={name}
@@ -71,6 +82,7 @@ function Register({onRegister, onClose}: RegisterProps) {
                 required
             />
             <input 
+                className="form-input"
                 type="email"
                 placeholder="Почта"
                 value={email}
@@ -78,13 +90,16 @@ function Register({onRegister, onClose}: RegisterProps) {
                 required
             />
             <input 
+                className="form-input"
                 type="password"
                 placeholder="Пароль"
                 value={password}
                 onChange={(e) =>  setPassword(e.target.value)}
                 required
             />
-            <button type="submit" disabled={loading}>
+            {massage &&<h3 className="message-email">{massage}</h3>}
+            <button className="btn btn-login btn-close" onClick={onClose}>❌</button>
+            <button className="btn btn-login" type="submit" disabled={loading}>
                 {loading ? "Регистрация..." : "Зарегистрироваться"}
             </button>
         </form>

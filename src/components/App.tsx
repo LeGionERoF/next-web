@@ -26,7 +26,7 @@ interface Idea {
 
 function App() {
   const [user, setUser] = useState<string | null>(null);
-  const [authMode, setAuthMode] = useState<"login" | "register" | null>(null)
+  const [mode, setMode] = useState<"login" | "register" | null>(null)
   const [loading, setLoading] = useState(true)
   const [ideas, setIdeas] = useState<Idea[]>([]);
 
@@ -63,20 +63,20 @@ useEffect(() => {
 
  
 
-  const handleLoginClick = () => setAuthMode("login")
-  const handleRegisterClick = () => setAuthMode("register")
-  const handleCloseAuth = () => setAuthMode(null)
+  const handleLoginClick = () => setMode("login")
+  const handleRegisterClick = () => setMode("register")
+  const handleCloseAuth = () => setMode(null)
 
   const handleLogin = (email: string) => {
     console.log("Вход:", {email})
     setUser(email.split('@')[0])
-    setAuthMode(null)
+    setMode(null)
   }
 
   const handleRegister = (name: string) => {
     console.log("Регистрация:", {name})
     setUser(name)
-    setAuthMode(null)
+    setMode(null)
   }
 
   const handleLogout = async () => {
@@ -124,17 +124,17 @@ useEffect(() => {
 
       <main className="main-content">
 
-        {authMode === 'login' && (<Login
+        {mode === 'login' && (<Login
           onLogin={handleLogin}
           onClose={handleCloseAuth}
         />)}
 
-      {authMode === "register" && (<Register
+      {mode === "register" && (<Register
           onRegister={handleRegister}
           onClose={handleCloseAuth}
         />)}
 
-      {!authMode && (
+      {!mode && 
         <>
           <IdeaForm onAddIdea={handleAddIdea}/>
           {loading ? (<p>Загрузка идет...</p>) : <IdeaList ideas={ideas}/>} 
@@ -142,7 +142,7 @@ useEffect(() => {
           
           
         </>
-      )}
+      }
 
 
         

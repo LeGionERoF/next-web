@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword} from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import "../css/Header.css"
@@ -28,6 +28,9 @@ function Login({onLogin, onClose}: LoginProps) {
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password)
+        
+
+
 
             const userName = userCredential.user.displayName || email.split('@')[0]
             
